@@ -2,12 +2,15 @@
 
 void	HumanB::attack()
 {
-	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon gun)
+void	HumanB::setWeapon(Weapon &gun)
 {
-	weapon = gun;
+	weapon = &gun;
 }
 
-HumanB::HumanB(std::string name){}
+HumanB::HumanB(std::string _name)
+{
+	name = _name;
+}
