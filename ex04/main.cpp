@@ -4,15 +4,10 @@
 #include <sys/stat.h>
 
 //create file.txt with content
-// Hello my my Nokayme is Jeff okay and i come
-// from the land of schoki.
-// Visit me at my house.
 
-
-bool	fileExists(std::string name)
+bool is_empty(std::ifstream &infile)
 {
-	struct stat buffer;
-	return stat(name.c_str(), &buffer) == 0;
+	return (infile.peek() == std::ifstream::traits_type::eof());
 }
 
 std::string changeline(std::string line, std::string argv2, std::string argv3)
@@ -27,7 +22,7 @@ std::string changeline(std::string line, std::string argv2, std::string argv3)
 			lastpos = pos + argv2.length();
 		}
     newline += line.substr(lastpos);
-    return newline;	
+    return (newline);	
 }
 
 int main(int argc, char **argv)
@@ -43,7 +38,12 @@ int main(int argc, char **argv)
 	std::ifstream infile(original.c_str());
 	if (!infile.is_open())
 	{
-		std::cout << "Failed to open file!" << std::endl;
+		std::cout << "Failed to open infile!" << std::endl;
+		return (1);
+	}
+	if (is_empty(infile) == true)
+	{
+		std::cout << "Empty file!" << std::endl;
 		return (1);
 	}
 	std::string line;
@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 	}
 	std::string argv2 = argv[2];
 	std::string argv3 = argv[3];
+	std::string tester;
 	while (std::getline(infile, line))
 	{
 		line = changeline(line, argv2, argv3);

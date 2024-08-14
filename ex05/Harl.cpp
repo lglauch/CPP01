@@ -45,5 +45,5 @@ void    Harl::complain(std::string level)
 		i++;
     }
 	std::cout << "Wrong parameter" << std::endl;
-	std::cout << "Please use: DEBUG, WARNING, INFO, ERROR" << std::endl;
+	std::cout << "Please use: DEBUG, WARNING, INFO, ERROR, EXIT" << std::endl;
 }

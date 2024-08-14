@@ -5,6 +5,11 @@ void Zombie::announce()
 	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
+Zombie::Zombie()
+{
+	std::cout << "Object Zombie created" << std::endl;
+}
+
 Zombie::~Zombie()
 {
 	std::cout << name << " got destroyed" << std::endl;
